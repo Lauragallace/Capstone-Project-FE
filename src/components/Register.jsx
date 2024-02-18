@@ -133,10 +133,10 @@ export default function Register() {
               setCognome(e.target.value);
             }}
           ></Form.Control>
-          <InputGroup className="d-flex flex-column w-100">
+          {/* <InputGroup className="d-flex flex-column w-100">
             <Form.Label className="text-center fs-5">Ruolo</Form.Label>
-          </InputGroup>
-          <Form.Select
+          </InputGroup> */}
+          {/* <Form.Select
             value={role}
             onChange={(e) => {
               setRole(e.target.value);
@@ -144,7 +144,7 @@ export default function Register() {
           >
             <option>USER</option>
             <option>ADMIN</option>
-          </Form.Select>
+          </Form.Select> */}
           <div className="text-center mt-3">
             <Button
               className="save-button rounded-5 px-3"
