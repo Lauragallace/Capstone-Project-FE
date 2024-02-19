@@ -3,7 +3,7 @@ import { Button, Form, InputGroup } from "react-bootstrap";
 import styled from "styled-components";
 const StyledRegister = styled.div`
   background-color: #ffffffec;
-  border: 2px solid #03999ec6;
+  border: 2px solid #257;
   border-radius: 40px;
   display: flex;
   align-items: center;
@@ -15,7 +15,7 @@ const StyledRegister = styled.div`
 
   h3 {
     font-size: 24px;
-    color: #02657b;
+    color: #257;
     margin: 0;
     text-align: center;
     margin-bottom: 20px;
@@ -24,7 +24,7 @@ const StyledRegister = styled.div`
   .save-button {
     margin-top: 20px;
     padding: 12px 24px;
-    background-color: #00bfff;
+    background-color: #257;
     border: none;
     border-radius: 8px;
     color: #ffffff;

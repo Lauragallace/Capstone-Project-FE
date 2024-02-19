@@ -6,6 +6,7 @@ import Register from "./components/Register";
 import Login from "./components/Login";
 import NavBar from "./components/NavBar";
 import SearchBar from "./components/SearchBar";
+import Footer from "./components/Footer";
 
 export default function App() {
   return (
@@ -16,6 +17,7 @@ export default function App() {
           <Route path="login" element={<Login />} />
           <Route path="MyNavBar" element={<NavBar />} />
           <Route path="SearchBar" element={<SearchBar />} />
+          <Route path="Footer" element={<Footer />} />
         </Route>
       </Routes>
     </BrowserRouter>

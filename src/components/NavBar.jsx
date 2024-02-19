@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import SearchBar from "./SearchBar";
 import Button from "react-bootstrap/Button";
@@ -57,9 +57,7 @@ const NavBar = () => {
       <NavBarContainer>
         <div className="d-flex">
           <div className="logo">
-            <img src="logoAir.jpg" />
-
-            <h1 className="d-inline">AirTravel</h1>
+            <img src="LogoAir.png" />
           </div>
         </div>
         <Menu menuOpen={menuOpen}>
