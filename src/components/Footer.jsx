@@ -1,25 +1,28 @@
 import React from "react";
 import styled from "styled-components";
-import { Col, Container, Row } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 
 const StyledContainer = styled(Container)`
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
   padding: 20px;
   background-color: #257;
   color: #fff;
-`;
 
-const StyledCol = styled(Col)`
-  /* Stili per le colonne */
-  margin-bottom: 10px; /* Esempio di stile aggiunto */
+  & > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+  }
 `;
 
 const StyledLink = styled.a`
   color: #ffffff;
   text-decoration: none;
-  margin-right: 20px;
+  margin: 5px 0;
 `;
 
 const StyledImage = styled.img`
@@ -79,45 +82,28 @@ const Footer = () => {
 
   return (
     <StyledContainer fluid>
-      <Row>
-        IT·it-IT·€ EUR <br />
-        <StyledCol as={StyledLink} href="#">
-          Help
-        </StyledCol>
-        <StyledCol as={StyledLink} href="#">
-          Impostazioni privacy
-        </StyledCol>
-        <StyledCol as={StyledLink} href="#">
-          Accedi
-        </StyledCol>
-        <StyledCol as={StyledLink} href="#">
-          Informativa sui cookie
-        </StyledCol>
-        <StyledCol as={StyledLink} href="#">
-          Informativa sulla privacy
-        </StyledCol>
-        <StyledCol as={StyledLink} href="#">
-          Termini di servizio
-        </StyledCol>
-        <StyledCol as={StyledLink} href="#">
-          Informazioni sull'azienda
-        </StyledCol>
-        <br />
-        <br />
-        Esplora <br />
+      <div>
+        IT·it-IT·€ EUR
+        <StyledLink href="#">Help</StyledLink>
+        <StyledLink href="#">Impostazioni privacy</StyledLink>
+        <StyledLink href="#">Accedi</StyledLink>
+        <StyledLink href="#">Informativa sui cookie</StyledLink>
+        <StyledLink href="#">Informativa sulla privacy</StyledLink>
+        <StyledLink href="#">Termini di servizio</StyledLink>
+        <StyledLink href="#">Informazioni sull'azienda</StyledLink>
+        Esplora
         <StyledLink href="#">Società</StyledLink>
         <StyledLink href="#">Partner</StyledLink>
         <StyledLink href="#">Viaggi</StyledLink>
-      </Row>
-      <Row>
+      </div>
+      <div>
         {nations.map((flight, index) => (
-          <StyledCol key={index}>
-            <StyledImage src={pngFiles[index]} alt={flight} />{" "}
-            {/* Immagine del volo */}
-            <span>{flight}</span> {/* Nome del volo */}
-          </StyledCol>
+          <div key={index}>
+            <StyledImage src={pngFiles[index]} alt={flight} />
+            <span>{flight}</span>
+          </div>
         ))}
-      </Row>
+      </div>
     </StyledContainer>
   );
 };

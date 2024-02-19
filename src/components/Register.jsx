@@ -5,14 +5,7 @@ const StyledRegister = styled.div`
   background-color: #ffffffec;
   border: 2px solid #257;
   border-radius: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  width: 50%;
-  padding: 30px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-
+  color: #257;
   h3 {
     font-size: 24px;
     color: #257;
@@ -24,7 +17,7 @@ const StyledRegister = styled.div`
   .save-button {
     margin-top: 20px;
     padding: 12px 24px;
-    background-color: #257;
+    background-color: #;
     border: none;
     border-radius: 8px;
     color: #ffffff;
