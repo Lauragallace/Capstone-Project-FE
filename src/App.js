@@ -7,6 +7,8 @@ import Login from "./components/Login";
 import NavBar from "./components/NavBar";
 import SearchBar from "./components/SearchBar";
 import Footer from "./components/Footer";
+import ProfileCustomer from "./components/ProfileCustomer";
+import SettingsPage from "./components/SettingsPage";
 
 export default function App() {
   return (
@@ -18,6 +20,8 @@ export default function App() {
           <Route path="MyNavBar" element={<NavBar />} />
           <Route path="SearchBar" element={<SearchBar />} />
           <Route path="Footer" element={<Footer />} />
+          <Route path="ProfileCustomer" element={<ProfileCustomer />} />
+          <Route path="Settings" element={<SettingsPage />} />
         </Route>
       </Routes>
     </BrowserRouter>
