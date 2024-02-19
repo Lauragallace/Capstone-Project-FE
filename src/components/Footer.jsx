@@ -1,7 +1,30 @@
+import React from "react";
+import styled from "styled-components";
 import { Col, Container, Row } from "react-bootstrap";
-//qua ti dovrai fare tutti gli import magari sarà una roba del genere
-// import {italy} from './assets/imgs/italy.png
-// ecc.
+
+const StyledContainer = styled(Container)`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #257;
+  color: #fff;
+`;
+
+const StyledCol = styled(Col)`
+  /* Stili per le colonne */
+  margin-bottom: 10px; /* Esempio di stile aggiunto */
+`;
+
+const StyledLink = styled.a`
+  color: #ffffff;
+  text-decoration: none;
+  margin-right: 20px;
+`;
+
+const StyledImage = styled.img`
+  /* Stili per le immagini */
+`;
 
 const Footer = () => {
   const nations = [
@@ -28,58 +51,74 @@ const Footer = () => {
     "(AE) United Arab Emirates - flights",
     "(US) USA - flights",
   ];
+
   const pngFiles = [
-    "cheap_flights.png",
-    "australia_cheap_flights.png",
-    "china_flight_tickets.png",
-    "denmark_flight_tickets.png",
-    "finland_flight_tickets.png",
-    "france_flight_tickets.png",
-    "germany_flight_tickets.png",
-    "india_flight_tickets.png",
-    "ireland_flight_tickets.png",
-    "italy_flight_tickets.png",
-    "japan_flight_tickets.png",
-    "mexico_flight_tickets.png",
-    "netherlands_flight_tickets.png",
-    "norway_flight_tickets.png",
-    "poland_flight_tickets.png",
-    "russia_flight_tickets.png",
-    "spain_flight_tickets.png",
-    "sweden_flight_tickets.png",
-    "switzerland_flight_tickets.png",
-    "turkey_flight_tickets.png",
-    "uae_flight_tickets.png",
-    "usa_flight_tickets.png",
+    "uk.png",
+    "au.png",
+    "cn.png",
+    "dk.png",
+    "fi.png",
+    "fr.png",
+    "de.png",
+    "in.png",
+    "ie.png",
+    "it.png",
+    "jp.png",
+    "mx.png",
+    "nl.png",
+    "no.png",
+    "pl.png",
+    "ru.png",
+    "es.png",
+    "se.png",
+    "ch.png",
+    "tr.png",
+    "uae.png",
+    "usa.png",
   ];
 
   return (
-    <Container>
+    <StyledContainer fluid>
       <Row>
         IT·it-IT·€ EUR <br />
-        <Col href="#">Help</Col>
-        <Col href="#">Impostazioni privacy</Col>
-        <Col href="#">Accedi</Col>
-        <Col href="#">Informativa sui cookie</Col>
-        <Col href="#">Informativa sulla privacy</Col>
-        <Col href="#">Termini di servizio</Col>
-        <Col href="#">Informazioni sull'azienda</Col>
+        <StyledCol as={StyledLink} href="#">
+          Help
+        </StyledCol>
+        <StyledCol as={StyledLink} href="#">
+          Impostazioni privacy
+        </StyledCol>
+        <StyledCol as={StyledLink} href="#">
+          Accedi
+        </StyledCol>
+        <StyledCol as={StyledLink} href="#">
+          Informativa sui cookie
+        </StyledCol>
+        <StyledCol as={StyledLink} href="#">
+          Informativa sulla privacy
+        </StyledCol>
+        <StyledCol as={StyledLink} href="#">
+          Termini di servizio
+        </StyledCol>
+        <StyledCol as={StyledLink} href="#">
+          Informazioni sull'azienda
+        </StyledCol>
         <br />
         <br />
         Esplora <br />
-        <a href="#">Società</a>
-        <a href="#">Partner</a>
-        <a href="#">Viaggi</a>
+        <StyledLink href="#">Società</StyledLink>
+        <StyledLink href="#">Partner</StyledLink>
+        <StyledLink href="#">Viaggi</StyledLink>
       </Row>
       <Row>
         {nations.map((flight, index) => (
-          <Col key={index}>
-            <img src={pngFiles[index]} alt={flight} /> {/* Immagine del volo */}
+          <StyledCol key={index}>
+            <StyledImage src={pngFiles[index]} alt={flight} />{" "}
+            {/* Immagine del volo */}
             <span>{flight}</span> {/* Nome del volo */}
-          </Col>
+          </StyledCol>
         ))}
       </Row>
-    </Container>
+    </StyledContainer>
   );
 };
 
