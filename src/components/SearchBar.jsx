@@ -1,27 +1,27 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
-const SearchBarContainer = styled.div`
+const Container = styled.div`
   display: flex;
   align-items: center;
   margin-top: 20px;
 `;
 
-const SearchInput = styled.input`
+const Input = styled.input`
   padding: 8px;
   margin-right: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
 `;
 
-const SearchSelect = styled.select`
+const Select = styled.select`
   padding: 8px;
   margin-right: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
 `;
 
-const SearchButton = styled.button`
+const Button = styled.button`
   background-color: #007bff;
   color: #fff;
   border: none;
@@ -38,7 +38,6 @@ const SearchBar = ({ onSearch }) => {
   const [flightClass, setFlightClass] = useState("");
 
   const handleSearch = () => {
-    // Passa i valori di ricerca alla funzione onSearch del genitore
     onSearch({
       flightDate,
       flightTime,
@@ -49,39 +48,39 @@ const SearchBar = ({ onSearch }) => {
   };
 
   return (
-    <SearchBarContainer>
-      <SearchInput
+    <Container>
+      <Input
         type="date"
         value={flightDate}
         onChange={(e) => setFlightDate(e.target.value)}
       />
-      <SearchInput
+      <Input
         type="time"
         value={flightTime}
         onChange={(e) => setFlightTime(e.target.value)}
       />
-      <SearchInput
+      <Input
         type="text"
         placeholder="Aeroporto di partenza"
         value={departureAirport}
         onChange={(e) => setDepartureAirport(e.target.value)}
       />
-      <SearchInput
+      <Input
         type="text"
         placeholder="Aeroporto di arrivo"
         value={arrivalAirport}
         onChange={(e) => setArrivalAirport(e.target.value)}
       />
-      <SearchSelect
+      <Select
         value={flightClass}
         onChange={(e) => setFlightClass(e.target.value)}
       >
         <option value="">Seleziona classe</option>
         <option value="economy">Economy</option>
         <option value="business">Business</option>
-      </SearchSelect>
-      <SearchButton onClick={handleSearch}>Cerca voli</SearchButton>
-    </SearchBarContainer>
+      </Select>
+      <Button onClick={handleSearch}>Cerca voli</Button>
+    </Container>
   );
 };
 
