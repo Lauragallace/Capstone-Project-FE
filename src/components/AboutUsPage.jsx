@@ -1,8 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 
-import backgroundImg from "../components/Aereo.jpg";
-
 // Componente principale della pagina "About Us"
 const AboutUsPage = () => {
   return (
@@ -36,14 +34,15 @@ const AboutUsPage = () => {
 
 // Stili con styled-components
 const Container = styled.div`
-  max-width: 800px;
+  ${"" /* max-width: 800px; */}
+  width: 100%;
   margin: 0 auto;
   padding: 20px;
-  background-image: url(${backgroundImg});
+  background-image: url(${"assets/Aereo.jpg"});
   background-size: cover;
   background-position: center;
-
-  border-radius: 10px;
+  ${"" /* opacity: 0.3; */}
+  ${"" /* border-radius: 10px; */}
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 `;
 

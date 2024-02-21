@@ -11,7 +11,7 @@ const NavBarContainer = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px;
+  ${"" /* padding: 20px; */}
   background-color: #257;
   color: #fff;
   img {
@@ -57,7 +57,7 @@ const NavBar = () => {
       <NavBarContainer>
         <div className="d-flex">
           <div className="logo">
-            <img src="LogoAir.png" />
+            <img src="assets/LogoAir.png" />
           </div>
         </div>
         <Menu menuOpen={menuOpen}>
@@ -69,10 +69,26 @@ const NavBar = () => {
               <a href="#">Flights</a>
             </li>
             <li>
-              <a href="#">About Us</a>
+              <a
+                href="#"
+                onClick={(e) => {
+                  e.preventDefault();
+                  navigate("AboutUs");
+                }}
+              >
+                About Us
+              </a>
             </li>
             <li>
-              <a href="#">Contact</a>
+              <a
+                href="#"
+                onClick={(e) => {
+                  e.preventDefault();
+                  navigate("Contact");
+                }}
+              >
+                Contact
+              </a>
             </li>
             <li>
               <a

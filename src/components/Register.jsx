@@ -32,12 +32,10 @@ const StyledRegister = styled.div`
 `;
 
 export default function Register() {
-  const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [nome, setNome] = useState("");
   const [cognome, setCognome] = useState("");
-  const [role, setRole] = useState("USER");
 
   function registraUtente() {
     fetch(`${process.env.REACT_APP_BACKEND}/auth/register`, {
@@ -46,22 +44,18 @@ export default function Register() {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        username: username,
+        firstName: nome,
+        lastName: cognome,
         email: email,
         password: password,
-        nome: nome,
-        cognome: cognome,
-        role: role,
       }),
     })
       .then((response) => {
         if (response.ok) {
-          setUsername("");
           setEmail("");
           setPassword("");
           setNome("");
           setCognome("");
-          setRole("");
           window.alert("Registrazione Effettuata con successo!");
         } else {
           throw new Error("errore nella fetch");
@@ -75,16 +69,6 @@ export default function Register() {
       <div className="inner">
         <h3>Registrati</h3>
         <form id="register-form">
-          <InputGroup className="d-flex flex-column w-100">
-            <Form.Label className="text-center fs-5">Username</Form.Label>
-          </InputGroup>
-          <Form.Control
-            required
-            value={username}
-            onChange={(e) => {
-              setUsername(e.target.value);
-            }}
-          ></Form.Control>
           <InputGroup className="d-flex flex-column w-100">
             <Form.Label className="text-center fs-5">Email</Form.Label>
           </InputGroup>

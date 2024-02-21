@@ -1,16 +1,28 @@
 import React from "react";
 import styled from "styled-components";
-import { Container } from "react-bootstrap";
 
-const StyledContainer = styled(Container)`
-  display: flex;
+const StyledContainer = styled.div`
   flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px;
-  background-color: #257;
+  margin: auto 0;
+  ${"" /* padding: 20px; */}
+  .bg-blue {
+    background-color: #05203c;
+  }
+  .air-travel {
+    height: 60px;
+  }
+  .footer-cols {
+    margin-right: 8em;
+  }
   color: #fff;
-
+  .flags-text {
+    color: #0062e3;
+  }
+  .int-s {
+    color: #111236;
+    text-align: left;
+    font-size: 16pt;
+  }
   & > div {
     display: flex;
     flex-direction: column;
@@ -56,53 +68,70 @@ const Footer = () => {
   ];
 
   const pngFiles = [
-    "uk.png",
-    "au.png",
-    "cn.png",
-    "dk.png",
-    "fi.png",
-    "fr.png",
-    "de.png",
-    "in.png",
-    "ie.png",
-    "it.png",
-    "jp.png",
-    "mx.png",
-    "nl.png",
-    "no.png",
-    "pl.png",
-    "ru.png",
-    "es.png",
-    "se.png",
-    "ch.png",
-    "tr.png",
-    "uae.png",
-    "usa.png",
+    "assets/uk.png",
+    "assets/au.png",
+    "assets/cn.png",
+    "assets/dk.png",
+    "assets/fi.png",
+    "assets/fr.png",
+    "assets/de.png",
+    "assets/in.png",
+    "assets/ie.png",
+    "assets/it.png",
+    "assets/jp.png",
+    "assets/mx.png",
+    "assets/nl.png",
+    "assets/no.png",
+    "assets/pl.png",
+    "assets/ru.png",
+    "assets/es.png",
+    "assets/se.png",
+    "assets/ch.png",
+    "assets/tr.png",
+    "assets/uae.png",
+    "assets/usa.png",
   ];
 
   return (
-    <StyledContainer fluid>
-      <div>
-        IT·it-IT·€ EUR
-        <StyledLink href="#">Help</StyledLink>
-        <StyledLink href="#">Impostazioni privacy</StyledLink>
-        <StyledLink href="#">Accedi</StyledLink>
-        <StyledLink href="#">Informativa sui cookie</StyledLink>
-        <StyledLink href="#">Informativa sulla privacy</StyledLink>
-        <StyledLink href="#">Termini di servizio</StyledLink>
-        <StyledLink href="#">Informazioni sull'azienda</StyledLink>
-        Esplora
-        <StyledLink href="#">Società</StyledLink>
-        <StyledLink href="#">Partner</StyledLink>
-        <StyledLink href="#">Viaggi</StyledLink>
-      </div>
-      <div>
-        {nations.map((flight, index) => (
-          <div key={index}>
-            <StyledImage src={pngFiles[index]} alt={flight} />
-            <span>{flight}</span>
+    <StyledContainer className="d-flex">
+      <div className="bg-blue d-flex">
+        <div className="d-flex mt-5 w-100 justify-content-center">
+          <div className="d-flex flex-column footer-cols">IT·it-IT·€ EUR</div>
+          <div className="d-flex flex-column footer-cols">
+            <StyledLink href="#">Help</StyledLink>
+            <StyledLink href="#">Impostazioni privacy</StyledLink>
+            <StyledLink href="#">Accedi</StyledLink>
           </div>
-        ))}
+          <div className="d-flex flex-column footer-cols">
+            <StyledLink href="#">Informativa sui cookie</StyledLink>
+            <StyledLink href="#">Informativa sulla privacy</StyledLink>
+            <StyledLink href="#">Termini di servizio</StyledLink>
+            <StyledLink href="#">Informazioni sull'azienda</StyledLink>
+          </div>
+          <div className="d-flex flex-column me-4 footer-cols">
+            <StyledLink href="#">Esplora</StyledLink>
+            <StyledLink href="#">Società</StyledLink>
+            <StyledLink href="#">Partner</StyledLink>
+            <StyledLink href="#">Viaggi</StyledLink>
+          </div>
+        </div>
+        <div className="d-flex justify-content-center align-items-center air-travel">
+          AirTravel td 2022-2024
+        </div>
+      </div>
+
+      <div className="container">
+        <div className="d-flex justify-content-start w-100 mb-4">
+          <span className="int-s">International Sites</span>
+        </div>
+        <div className="row">
+          {nations.map((flight, index) => (
+            <div key={index} className="col-3 mb-2">
+              <StyledImage src={pngFiles[index]} alt={flight} />
+              <span className="flags-text">{flight}</span>
+            </div>
+          ))}
+        </div>
       </div>
     </StyledContainer>
   );
