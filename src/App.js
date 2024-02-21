@@ -12,6 +12,7 @@ import SettingsPage from "./components/SettingsPage";
 import ContactPage from "./components/ContactPage";
 import AboutUsPage from "./components/AboutUsPage";
 import HomePage from "./components/HomePage";
+import AreaAdmin from "./components/AreaAdmin";
 
 export default function App() {
   return (
@@ -21,11 +22,12 @@ export default function App() {
           <Route path="registration" element={<Register />} />
           <Route path="login" element={<Login />} />
           <Route path="SearchBar" element={<SearchBar />} />
-          <Route path="ProfileCustomer" element={<ProfileCustomer />} />
+          <Route path="Profile" element={<ProfileCustomer />} />
           <Route path="Settings" element={<SettingsPage />} />
           <Route path="Contact" element={<ContactPage />} />
           <Route path="AboutUs" element={<AboutUsPage />} />
           <Route path="Home" element={<HomePage />} />
+          <Route path="AreaAdmin" element={<AreaAdmin />} />
         </Route>
       </Routes>
     </BrowserRouter>

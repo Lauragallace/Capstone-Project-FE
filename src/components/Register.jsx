@@ -6,6 +6,7 @@ const StyledRegister = styled.div`
   border: 2px solid #257;
   border-radius: 40px;
   color: #257;
+
   h3 {
     font-size: 24px;
     color: #257;
@@ -110,18 +111,7 @@ export default function Register() {
               setCognome(e.target.value);
             }}
           ></Form.Control>
-          {/* <InputGroup className="d-flex flex-column w-100">
-            <Form.Label className="text-center fs-5">Ruolo</Form.Label>
-          </InputGroup> */}
-          {/* <Form.Select
-            value={role}
-            onChange={(e) => {
-              setRole(e.target.value);
-            }}
-          >
-            <option>USER</option>
-            <option>ADMIN</option>
-          </Form.Select> */}
+
           <div className="text-center mt-3">
             <Button
               className="save-button rounded-5 px-3"

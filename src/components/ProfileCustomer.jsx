@@ -5,7 +5,7 @@ import styled from "styled-components";
 const ProfileContainer = styled.div`
   max-width: 600px;
   margin: 0 auto;
-  padding: 40px;
+  ${"" /* padding: 40px; */}
   background-color: #ffffff;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -53,13 +53,10 @@ const ProfileButton = styled.button`
 const ProfileCustomer = () => {
   return (
     <ProfileContainer>
-      <ProfileImage src="avatar.png" alt="User Avatar" />
+      <ProfileImage src="assets/avatar.png" alt="User Avatar" />
       <ProfileDetails>
         <ProfileName>John Doe</ProfileName>
-        <ProfileBio>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vel
-          libero tellus.
-        </ProfileBio>
+        <ProfileBio>CEO</ProfileBio>
         <ProfileButton>Edit Profile</ProfileButton>
         <ProfileButton>Delete Profile</ProfileButton>
       </ProfileDetails>

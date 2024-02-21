@@ -116,7 +116,7 @@ const Footer = () => {
           </div>
         </div>
         <div className="d-flex justify-content-center align-items-center air-travel">
-          AirTravel td 2022-2024
+          ©AirTravel td 2023-2024
         </div>
       </div>
 

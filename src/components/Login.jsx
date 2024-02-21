@@ -45,7 +45,14 @@ export default function Login() {
       })
       .then((data) => {
         localStorage.setItem("authToken", data.token);
-        navigate("/area_protetta");
+        localStorage.setItem("role", data.role);
+        alert(
+          "tutto ok, token: " +
+            localStorage.getItem("authToken") +
+            " , ruolo: " +
+            localStorage.getItem("role")
+        );
+        navigate("AreaAdmin");
       })
       .catch((err) => console.log("ERRORE!", err));
   }

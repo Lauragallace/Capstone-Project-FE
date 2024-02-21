@@ -63,10 +63,26 @@ const NavBar = () => {
         <Menu menuOpen={menuOpen}>
           <ul>
             <li>
-              <a href="#">Home</a>
+              <a
+                href="#"
+                onClick={(e) => {
+                  e.preventDefault();
+                  navigate("Profile");
+                }}
+              >
+                Profile
+              </a>
             </li>
             <li>
-              <a href="#">Flights</a>
+              <a
+                href="#"
+                onClick={(e) => {
+                  e.preventDefault();
+                  navigate("Settings");
+                }}
+              >
+                Settings
+              </a>
             </li>
             <li>
               <a
@@ -99,6 +115,16 @@ const NavBar = () => {
                 }}
               >
                 Registrati
+              </a>
+            </li>
+            <li>
+              <a
+                href="#"
+                onClick={() => {
+                  navigate("login");
+                }}
+              >
+                Login
               </a>
             </li>
           </ul>
