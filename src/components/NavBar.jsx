@@ -17,6 +17,7 @@ const NavBarContainer = styled.nav`
   img {
     width: 100px;
     height: 100px;
+    cursor: pointer;
   }
 `;
 
@@ -57,7 +58,13 @@ const NavBar = () => {
       <NavBarContainer>
         <div className="d-flex">
           <div className="logo">
-            <img src="assets/LogoIcona.png" alt="" />
+            <img
+              src="assets/LogoIcona.png"
+              alt=""
+              onClick={() => {
+                navigate("");
+              }}
+            />
           </div>
         </div>
         <Menu menuOpen={menuOpen}>
