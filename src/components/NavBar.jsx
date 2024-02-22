@@ -12,7 +12,7 @@ const NavBarContainer = styled.nav`
   justify-content: space-between;
   align-items: center;
   ${"" /* padding: 20px; */}
-  background-color: #257;
+  background-color: #05203c;
   color: #fff;
   img {
     width: 100px;
@@ -57,7 +57,7 @@ const NavBar = () => {
       <NavBarContainer>
         <div className="d-flex">
           <div className="logo">
-            <img src="assets/LogoAir.png" />
+            <img src="assets/LogoIcona.png" alt="" />
           </div>
         </div>
         <Menu menuOpen={menuOpen}>

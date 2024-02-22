@@ -3,13 +3,13 @@ import { Button, Form, InputGroup } from "react-bootstrap";
 import styled from "styled-components";
 const StyledRegister = styled.div`
   background-color: #ffffffec;
-  border: 2px solid #257;
+  border: 2px solid #05203c;
   border-radius: 40px;
-  color: #257;
+  color: #05203c;
 
   h3 {
     font-size: 24px;
-    color: #257;
+    color: #05203c;
     margin: 0;
     text-align: center;
     margin-bottom: 20px;
