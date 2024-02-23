@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Modal } from "react-bootstrap";
+import styled from "styled-components";
 
 export default function Flights() {
   const [modalAddFligth, setModalAddFligth] = useState(false);
@@ -11,9 +12,21 @@ export default function Flights() {
   const [places, setPlaces] = useState("");
   const [flightClass, setFlightClass] = useState("");
   const [price, setPrice] = useState("");
+  const [flights, setFlights] = useState([]);
+
+  const StyledFlight = styled.div`
+    .flight {
+      background: lightblue;
+      border-radius: 8px;
+      width: 45%;
+      margin: 2em;
+      padding: 2em;
+    }
+  `;
 
   useEffect(() => {
     getAirports();
+    getFlights();
   }, []);
 
   function getAirports() {
@@ -66,8 +79,31 @@ export default function Flights() {
       .catch((error) => {});
   }
 
+  function getFlights() {
+    fetch(`${process.env.REACT_APP_BACKEND}/flights`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + localStorage.getItem("authToken"),
+      },
+    })
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error("problems");
+        }
+      })
+      .then((data) => {
+        console.log(data);
+        setFlights(data);
+      })
+
+      .catch((error) => {});
+  }
+
   return (
-    <>
+    <StyledFlight>
       <div className="d-flex justify-content-center">
         <h2>Area Voli</h2>
       </div>
@@ -80,6 +116,29 @@ export default function Flights() {
         >
           Aggiungi Volo
         </button>
+      </div>
+      <h2 className="text-center">Elenco voli</h2>
+      <div className="d-flex justify-content-center align-items-center flex-column">
+        {flights &&
+          flights.map((flight, i) => {
+            return (
+              <div key={i} className="text-center flight">
+                <div>Classe: {flight.flightClass}</div>
+                <div>Numero posti: {flight.places}</div>
+                <div>Prezzo: {flight.price} &euro;</div>
+                <div>Data di partenza: {flight.departureDate}</div>
+                <div>Data di arrivo: {flight.arrivalDate}</div>
+                <div>
+                  Aeroporto di partenza:{" "}
+                  {flight.departureAirport && flight.departureAirport.name}
+                </div>
+                <div>
+                  Aeroporto di arrivo:{" "}
+                  {flight.arrivalAirport && flight.arrivalAirport.name}
+                </div>
+              </div>
+            );
+          })}
       </div>
       <Modal
         show={modalAddFligth}
@@ -179,6 +238,6 @@ export default function Flights() {
           </div>
         </Modal.Body>
       </Modal>
-    </>
+    </StyledFlight>
   );
 }

@@ -114,25 +114,59 @@ const NavBar = () => {
               </a>
             </li>
             <li>
-              <a
-                href="#"
-                onClick={() => {
-                  // navigate("./registration");
-                  setModalRegister(true);
-                }}
-              >
-                Registrati
-              </a>
+              {!localStorage.getItem("authToken") && (
+                <a
+                  href="#"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    // navigate("./registration");
+                    setModalRegister(true);
+                  }}
+                >
+                  Registrati
+                </a>
+              )}
+              {localStorage.getItem("authToken") !== undefined && (
+                <a
+                  href="#"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    if (localStorage.getItem("role") === "CUSTOMER") {
+                      navigate("AreaCustomer");
+                    } else if (localStorage.getItem("role") === "ADMIN") {
+                      navigate("AreaAdmin");
+                    }
+                  }}
+                >
+                  Area Protetta
+                </a>
+              )}
             </li>
             <li>
-              <a
-                href="#"
-                onClick={() => {
-                  navigate("login");
-                }}
-              >
-                Login
-              </a>
+              {!localStorage.getItem("authToken") && (
+                <a
+                  href="#"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigate("login");
+                  }}
+                >
+                  Login
+                </a>
+              )}
+              {localStorage.getItem("authToken") && (
+                <a
+                  href="#"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    localStorage.removeItem("authToken");
+                    localStorage.removeItem("role");
+                    navigate("/");
+                  }}
+                >
+                  Logout
+                </a>
+              )}
             </li>
           </ul>
         </Menu>

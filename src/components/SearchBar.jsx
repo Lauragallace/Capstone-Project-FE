@@ -11,6 +11,13 @@ const StyledSeach = styled.div`
   select {
     margin-right: 1em;
   }
+  .flight {
+    background: lightblue;
+    border-radius: 8px;
+    width: 45%;
+    margin: 2em;
+    padding: 2em;
+  }
 `;
 
 const Container = styled.div`
@@ -45,7 +52,7 @@ const Button = styled.button`
 const SearchBar = ({ onSearch }) => {
   const [flightDate, setFlightDate] = useState("");
   const [flightClass, setFlightClass] = useState("");
-  const [searchResults, setSearchResults] = useState([]);
+  const [flights, setFlights] = useState([]);
   const [airports, setAirports] = useState([]);
   const [departure, setDeparture] = useState();
   const [arrival, setArrival] = useState();
@@ -98,11 +105,33 @@ const SearchBar = ({ onSearch }) => {
         }
       })
       .then((data) => {
-        setSearchResults(data);
+        setFlights(data);
         console.log(data);
       })
       .catch((error) => {});
   };
+
+  function bookFlight(flightId) {
+    fetch(`${process.env.REACT_APP_BACKEND}/reservations`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + localStorage.getItem("authToken"),
+      },
+      body: JSON.stringify({
+        flightId: flightId,
+      }),
+    })
+      .then((response) => {
+        if (response.ok) {
+          alert("prenotazione Ok");
+        } else {
+          throw new Error("problems");
+        }
+      })
+
+      .catch((error) => {});
+  }
 
   return (
     <StyledSeach>
@@ -168,6 +197,41 @@ const SearchBar = ({ onSearch }) => {
         <button className="btn btn-primary text-nowrap" onClick={handleSearch}>
           Cerca voli
         </button>
+      </div>
+      <h2 className="text-center">Risultati ricerca</h2>
+      <div className="d-flex justify-content-center align-items-center flex-column">
+        {flights &&
+          flights.map((flight, i) => {
+            return (
+              flight.remainingPlaces > 0 && (
+                <div key={i} className="text-center flight">
+                  <div>Classe: {flight.flightClass}</div>
+                  <div>Numero posti rimanenti: {flight.remainingPlaces}</div>
+                  <div>Prezzo: {flight.price} &euro;</div>
+                  <div>Data di partenza: {flight.departureDate}</div>
+                  <div>Data di arrivo: {flight.arrivalDate}</div>
+                  <div>
+                    Aeroporto di partenza:{" "}
+                    {flight.departureAirport && flight.departureAirport.name}
+                  </div>
+                  <div>
+                    Aeroporto di arrivo:{" "}
+                    {flight.arrivalAirport && flight.arrivalAirport.name}
+                  </div>
+                  <div className="d-flex align-items-center justify-content-center">
+                    <button
+                      className="btn mt-2 btn-primary"
+                      onClick={() => {
+                        bookFlight(flight.id);
+                      }}
+                    >
+                      Prenota Volo
+                    </button>
+                  </div>
+                </div>
+              )
+            );
+          })}
       </div>
     </StyledSeach>
   );

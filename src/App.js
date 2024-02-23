@@ -15,6 +15,7 @@ import HomePage from "./components/HomePage";
 import AreaAdmin from "./components/AreaAdmin";
 import Airports from "./components/Airports";
 import Flights from "./components/Fligths";
+import AreaCustomer from "./components/AreaCustomer";
 
 export default function App() {
   return (
@@ -33,6 +34,7 @@ export default function App() {
             <Route path="airports" element={<Airports />} />
             <Route path="flights" element={<Flights />} />
           </Route>
+          <Route path="AreaCustomer" element={<AreaCustomer />}></Route>
         </Route>
       </Routes>
     </BrowserRouter>

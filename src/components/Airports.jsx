@@ -74,7 +74,7 @@ export default function Airports() {
         {airports.map((airport, i) => {
           return (
             <>
-              <li>{airport.name}</li>
+              <li key={i}>{airport.name}</li>
             </>
           );
         })}

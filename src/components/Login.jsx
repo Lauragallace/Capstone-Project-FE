@@ -46,7 +46,11 @@ export default function Login() {
       .then((data) => {
         localStorage.setItem("authToken", data.token);
         localStorage.setItem("role", data.role);
-        navigate("/AreaAdmin");
+        if (data.role === "ADMIN") {
+          navigate("/AreaAdmin");
+        } else if (data.role === "CUSTOMER") {
+          navigate("/AreaCustomer");
+        }
       })
       .catch((err) => console.log("ERRORE!", err));
   }
