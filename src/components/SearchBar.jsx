@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-
+import { format } from "date-fns";
 const StyledSeach = styled.div`
+  background: linear-gradient(to bottom, white, #05203c);
   .search {
     align-items: center;
   }
@@ -13,6 +14,7 @@ const StyledSeach = styled.div`
   }
   .flight {
     background: lightblue;
+    border: 2px solid black;
     border-radius: 8px;
     width: 45%;
     margin: 2em;
@@ -78,6 +80,7 @@ const SearchBar = ({ onSearch }) => {
       })
       .then((data) => {
         setAirports(data);
+        // console.log(data);
       })
       .catch((error) => {});
   }
@@ -125,6 +128,8 @@ const SearchBar = ({ onSearch }) => {
       .then((response) => {
         if (response.ok) {
           alert("prenotazione Ok");
+        } else if (response.status === 400) {
+          alert("Volo già prenotato!");
         } else {
           throw new Error("problems");
         }
@@ -208,8 +213,20 @@ const SearchBar = ({ onSearch }) => {
                   <div>Classe: {flight.flightClass}</div>
                   <div>Numero posti rimanenti: {flight.remainingPlaces}</div>
                   <div>Prezzo: {flight.price} &euro;</div>
-                  <div>Data di partenza: {flight.departureDate}</div>
-                  <div>Data di arrivo: {flight.arrivalDate}</div>
+                  <div>
+                    Data di partenza:{" "}
+                    {format(
+                      new Date(flight.departureDate),
+                      "dd-MM-yyyy HH:mm:ss"
+                    )}
+                  </div>
+                  <div>
+                    Data di arrivo:{" "}
+                    {format(
+                      new Date(flight.arrivalDate),
+                      "dd-MM-yyyy HH:mm:ss"
+                    )}
+                  </div>
                   <div>
                     Aeroporto di partenza:{" "}
                     {flight.departureAirport && flight.departureAirport.name}

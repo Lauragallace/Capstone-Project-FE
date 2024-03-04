@@ -9,8 +9,8 @@ export default function Flights() {
   const [arrival, setArrival] = useState();
   const [departureDate, setDepartureDate] = useState("");
   const [arrivalDate, setArrivalDate] = useState("");
-  const [places, setPlaces] = useState("");
-  const [flightClass, setFlightClass] = useState("");
+  const [places, setPlaces] = useState();
+  const [flightClass, setFlightClass] = useState("ECONOMY");
   const [price, setPrice] = useState("");
   const [flights, setFlights] = useState([]);
 
@@ -71,6 +71,7 @@ export default function Flights() {
         if (response.ok) {
           setModalAddFligth(false);
           alert("Volo Inserito con successo!");
+          getFlights();
         } else {
           throw new Error("problems");
         }
@@ -96,50 +97,52 @@ export default function Flights() {
       })
       .then((data) => {
         console.log(data);
-        setFlights(data);
+        setFlights(data.reverse());
       })
 
       .catch((error) => {});
   }
 
   return (
-    <StyledFlight>
-      <div className="d-flex justify-content-center">
-        <h2>Area Voli</h2>
-      </div>
-      <div className="d-flex justify-content-center mb-5">
-        <button
-          className="btn btn-primary"
-          onClick={() => {
-            setModalAddFligth(true);
-          }}
-        >
-          Aggiungi Volo
-        </button>
-      </div>
-      <h2 className="text-center">Elenco voli</h2>
-      <div className="d-flex justify-content-center align-items-center flex-column">
-        {flights &&
-          flights.map((flight, i) => {
-            return (
-              <div key={i} className="text-center flight">
-                <div>Classe: {flight.flightClass}</div>
-                <div>Numero posti: {flight.places}</div>
-                <div>Prezzo: {flight.price} &euro;</div>
-                <div>Data di partenza: {flight.departureDate}</div>
-                <div>Data di arrivo: {flight.arrivalDate}</div>
-                <div>
-                  Aeroporto di partenza:{" "}
-                  {flight.departureAirport && flight.departureAirport.name}
+    <>
+      <StyledFlight>
+        <div className="d-flex justify-content-center">
+          <h2>Area Voli</h2>
+        </div>
+        <div className="d-flex justify-content-center mb-5">
+          <button
+            className="btn btn-primary"
+            onClick={() => {
+              setModalAddFligth(true);
+            }}
+          >
+            Aggiungi Volo
+          </button>
+        </div>
+        <h2 className="text-center">Elenco voli</h2>
+        <div className="d-flex justify-content-center align-items-center flex-column">
+          {flights &&
+            flights.map((flight, i) => {
+              return (
+                <div key={i} className="text-center flight">
+                  <div>Classe: {flight.flightClass}</div>
+                  <div>Numero posti: {flight.places}</div>
+                  <div>Prezzo: {flight.price} &euro;</div>
+                  <div>Data di partenza: {flight.departureDate}</div>
+                  <div>Data di arrivo: {flight.arrivalDate}</div>
+                  <div>
+                    Aeroporto di partenza:{" "}
+                    {flight.departureAirport && flight.departureAirport.name}
+                  </div>
+                  <div>
+                    Aeroporto di arrivo:{" "}
+                    {flight.arrivalAirport && flight.arrivalAirport.name}
+                  </div>
                 </div>
-                <div>
-                  Aeroporto di arrivo:{" "}
-                  {flight.arrivalAirport && flight.arrivalAirport.name}
-                </div>
-              </div>
-            );
-          })}
-      </div>
+              );
+            })}
+        </div>
+      </StyledFlight>
       <Modal
         show={modalAddFligth}
         onHide={() => {
@@ -238,6 +241,6 @@ export default function Flights() {
           </div>
         </Modal.Body>
       </Modal>
-    </StyledFlight>
+    </>
   );
 }
