@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-
+import { Github, Linkedin } from "react-bootstrap-icons";
 const StyledContainer = styled.div`
   flex-direction: column;
   margin: auto 0;
@@ -101,6 +101,26 @@ const Footer = () => {
             <StyledLink href="#">Help</StyledLink>
             <StyledLink href="#">Impostazioni privacy</StyledLink>
             <StyledLink href="#">Accedi</StyledLink>
+            <p className="mb-0 fs-4">
+              <a
+                target="_blank"
+                rel="noreferrer"
+                style={{ color: "#8d8c7c" }}
+                href="https://github.com/Lauragallace"
+                alt="Developer's Github"
+              >
+                <Github className="me-sm-2 me-1" />
+              </a>
+              <a
+                target="_blank"
+                rel="noreferrer"
+                style={{ color: "#8d8c7c" }}
+                href="https://www.linkedin.com/in/laura-gallace-webdeveloper/"
+                alt="Laura Gallace LinkedIn"
+              >
+                <Linkedin className="ms-sm-2 me-sm-3 me-1" />
+              </a>
+            </p>
           </div>
           <div className="d-flex flex-column footer-cols">
             <StyledLink href="#">Informativa sui cookie</StyledLink>
